@@ -17,4 +17,6 @@ do
 done
 
 # Cleanup old . bash_history
-rm "$HOME/.bash_history"
+if [ -f "$HOME/.bash_history" ]; then
+    rm "$HOME/.bash_history"
+fi
