@@ -1,0 +1,11 @@
+# ~/.bash_completion: My special auto complete rules
+
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+if [ -f ~/.ssh/config ]; then
+    complete -o "default" -o "nospace" -W "$(grep "^Host " ~/.ssh/config | cut -c 5- | tr -d ' ')" scp sftp ssh
+fi
+
+# Include system defaults
+if [ -f /etc/bash_completion ]; then
+    source /etc/bash_completion
+fi
