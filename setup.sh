@@ -9,7 +9,7 @@
 cat "$HOME/.dotfiles/config/ssh/authorized_keys" >> "$HOME/.ssh/authorized_keys"
 
 # TODO: Make this read all files from the config dir with some error handling
-dotfiles="bash_aliases bash_completion bash_profile bashrc hushlogin jsbeautifyrc jshintrc perltidyrc"
+dotfiles="bash_aliases bash_completion bash_profile bashrc jsbeautifyrc jshintrc perltidyrc"
 
 for dotfile in $dotfiles
 do
