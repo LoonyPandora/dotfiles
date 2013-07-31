@@ -16,6 +16,12 @@ export HISTTIMEFORMAT="%d/%m/%y - %H:%M:%S: "
 # Set the history file to be in the dotfiles directory
 export HISTFILE="$HOME/.dotfiles/bash_history"
 
+# Give us much much more storage for history
+export HISTFILESIZE="10000"
+
+# But don't load it all into memory
+export HISTSIZE="500"
+
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend
 
