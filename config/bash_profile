@@ -1,20 +1,20 @@
 # ~/.bash_profile: executed by bash(1) for login shells.
 
 # Include all the stuff that a non-login shell gets
-if [ -f ~/.bashrc ]; then
-    source ~/.bashrc
+if [ -f "$HOME/.bashrc" ]; then
+    source "$HOME/.bashrc"
 fi
 
 # Include all my lovely lovely aliases
-if [ -f ~/.bash_aliases ]; then
-    source ~/.bash_aliases
+if [ -f "$HOME/.bash_aliases" ]; then
+    source "$HOME/.bash_aliases"
 fi
 
 # Set the history time format
 export HISTTIMEFORMAT="%d/%m/%y - %H:%M:%S: "
 
 # Set the history file to be in the dotfiles directory
-export HISTFILE="~/.dotfiles/bash_history"
+export HISTFILE="$HOME/.dotfiles/bash_history"
 
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend
