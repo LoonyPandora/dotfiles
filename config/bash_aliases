@@ -17,5 +17,4 @@ if [ $(uname) == "Darwin"  ]; then
 
     # Do all manner of updates
     # alias update="sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm update npm -g; npm update -g; cpan-outdated | xargs cpanm --sudo -n"
-
 fi

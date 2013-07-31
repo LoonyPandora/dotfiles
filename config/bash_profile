@@ -10,5 +10,17 @@ if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
 
+# Set the history time format
+export HISTTIMEFORMAT="%d/%m/%y - %H:%M:%S: "
+
+# Set the history file to be in the dotfiles directory
+export HISTFILE="~/.dotfiles/bash_history"
+
+# Append to the Bash history file, rather than overwriting it
+shopt -s histappend
+
+# Make multiple-line commands count as one
+shopt -s cmdhist
+
 # A fancy colorized prompt
 export PS1="\[\e[01;32m\]\u@\h\[\e[0m\] \w → "
