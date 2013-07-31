@@ -1,0 +1,58 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+
+# Stuff only for OS X
+if [ $(uname) == "Darwin"  ]; then
+    # Include the the brew bin and sbins
+    if [ -d /usr/local/bin ] ; then
+        PATH=/usr/local/bin:"${PATH}"
+    fi
+
+    if [ -d /usr/local/sbin ] ; then
+        PATH=/usr/local/sbin:"${PATH}"
+    fi
+
+    # Rubygems bin
+    if [ -d /usr/local/Cellar/ruby/1.9.3-p125/bin ] ; then
+        PATH=/usr/local/Cellar/ruby/1.9.3-p125/bin:"${PATH}"
+    fi
+
+    # Node.js bin
+    if [ -d /usr/local/share/npm/bin ] ; then
+        PATH=/usr/local/share/npm/bin:"${PATH}"
+    fi
+
+    # To pull in freetype libs
+    if [ -d /usr/X11/lib ] ; then
+        PATH=/usr/X11/lib:"${PATH}"
+    fi
+
+    # Fallback in case my symlinks get borked
+    if [ -d /Users/james/.homebrew/bin ] ; then
+        PATH="${PATH}":/Users/james/.homebrew/bin
+    fi
+
+    if [ -d /Users/james/.homebrew/sbin ] ; then
+        PATH="${PATH}":/Users/james/.homebrew/sbin
+    fi
+
+    # Xcode 4 doesn't have a pcc assembler, so remove from archflags
+    export ARCHFLAGS="-arch x86_64 -arch i386"
+
+    # Include the the perlbrew stuff
+    export PERLBREW_ROOT=/usr/local/perlbrew
+    export PERLBREW_PATH=/usr/local/perlbrew/bin:/usr/local/perlbrew/perls/current/bin:"${PATH}"
+
+    # Homebrew Stuff
+    export HOMEBREW_PREFIX=/usr/local
+
+    # Node JS stuf
+    export NODE_PATH=/usr/local/lib/node:/usr/local/lib/node_modules
+
+    # TextMate Stuff
+    export TM_PERL=/usr/local/perlbrew/perls/perl-5.14.1/bin/perl
+
+    if [ -f /usr/local/perlbrew/etc/bashrc ] ; then
+        source /usr/local/perlbrew/etc/bashrc
+    fi
+fi
+

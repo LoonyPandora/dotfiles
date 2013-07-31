@@ -1,0 +1,18 @@
+# ~/.bash_aliases: Only aliased for login shells
+
+# Colorize ls output cross platform
+if [ $(uname) == "Linux"  ]; then
+    alias ls='ls -lah --color=auto'
+elif [ $(uname) == "Darwin"  ]; then
+    alias ls='ls -lahG'
+fi
+
+# Just to be on the safe side when using command line mysql
+alias mysql="mysql --safe-updates --show-warnings"
+
+
+# OS X Specific aliases
+if [ $(uname) == "Darwin"  ]; then
+    # Remove duplicates from "open with" contextual menu
+    alias fixopenwith='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user'
+fi
