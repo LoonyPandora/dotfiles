@@ -15,3 +15,6 @@ for dotfile in $dotfiles
 do
     ln -sf "$HOME/.dotfiles/config/$dotfile" "$HOME/.$dotfile"
 done
+
+# Cleanup old . bash_history
+rm "$HOME/.bash_history"
