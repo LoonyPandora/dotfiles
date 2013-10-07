@@ -51,6 +51,10 @@ if [ $(uname) == "Darwin"  ]; then
     # TextMate Stuff
     export TM_PERL=/usr/local/perlbrew/perls/perl-5.14.1/bin/perl
 
+    # Default editor should be textmate for things that need it.
+    export EDITOR="/usr/local/bin/mate -w"
+
+    # The perlbrew bash function for perlbrew use in shell scripts
     if [ -f /usr/local/perlbrew/etc/bashrc ] ; then
         source /usr/local/perlbrew/etc/bashrc
     fi
