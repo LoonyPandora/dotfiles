@@ -35,7 +35,8 @@ if [ $(uname) == "Darwin"  ]; then
         PATH="${PATH}":/Users/james/.homebrew/sbin
     fi
 
-    # Xcode 4 doesn't have a pcc assembler, so remove from archflags
+    # Xcode 4 doesn't have a PPC assembler, so remove from archflags
+    # Might as well build both 32 and 64 bit versions, disk space is no problem
     export ARCHFLAGS="-arch x86_64 -arch i386"
 
     # Include the the perlbrew stuff
@@ -45,7 +46,7 @@ if [ $(uname) == "Darwin"  ]; then
     # Homebrew Stuff
     export HOMEBREW_PREFIX=/usr/local
 
-    # Node JS stuf
+    # Node JS Stuff
     export NODE_PATH=/usr/local/lib/node:/usr/local/lib/node_modules
 
     # TextMate Stuff
