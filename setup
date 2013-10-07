@@ -20,3 +20,8 @@ done
 if [ -f "$HOME/.bash_history" ]; then
     rm "$HOME/.bash_history"
 fi
+
+# Only quieten the login on OS X - It's useful on remote linux servers
+if [ $(uname) == "Darwin"  ]; then
+    touch "$HOME/.hushlogin"
+fi
