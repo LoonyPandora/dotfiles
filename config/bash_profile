@@ -33,5 +33,10 @@ shopt -s histappend
 # Make multiple-line commands count as one
 shopt -s cmdhist
 
+# Append to the history file immediately after running the command
+# This keeps the history file in time order for analytics
+# But doesn't break up-arrow behaviour with commands run in other shell
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND";
+
 # A fancy colorized prompt
 export PS1="\[\e[01;32m\]\u@\h\[\e[0m\] \w → "
