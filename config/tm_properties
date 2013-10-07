@@ -1,0 +1,25 @@
+encoding = "UTF-8"
+fontName = "Anonymous Pro"
+fontSize = 14
+tabSize = 4
+softTabs = true
+showInvisibles = true
+invisibles = "~ "
+
+# Show all these files in the file browser 
+include = "{*,.tm_properties,.htaccess,.travis.yml,.jshintrc,.csslintrc}"
+
+# Can cause performance issues, and I check status with a different app
+scmStatus = false
+
+# Non code files could do with some spellchecking
+[ *.{txt,md,mdown,markdown} ]
+spellChecking  = true
+
+# Will open external program if double clicked
+[ *.{ai,gif,icns,ico,jpg,jpeg,m4v,nib,o,pdf,png,psd,pyc,rtf,scssc,tif,tiff,xib},Icon\r ]
+binary = true
+
+# A default file type
+[ "{README, INSTALL, LICENSE, TODO, CHANGES}" ]
+fileType = "text.plain"
