@@ -4,7 +4,7 @@ fontSize = 14
 tabSize = 4
 softTabs = true
 showInvisibles = true
-invisibles = "~ "
+invisiblesMap = "~ "
 
 # Show all these files in the file browser 
 include = "{*,.tm_properties,.htaccess,.travis.yml,.jshintrc,.csslintrc}"
