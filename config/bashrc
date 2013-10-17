@@ -26,6 +26,12 @@ if [ $(uname) == "Darwin"  ]; then
         PATH=/usr/X11/lib:"${PATH}"
     fi
 
+    # Perlbrew path
+    if [ -d /usr/local/perlbrew/perls/perl-5.14.1/bin ]; then
+        PATH=/usr/local/perlbrew/perls/perl-5.14.1/bin:"${PATH}"
+    fi
+
+
     # Fallback in case my symlinks get borked
     if [ -d /Users/james/.homebrew/bin ]; then
         PATH="${PATH}":/Users/james/.homebrew/bin
@@ -41,7 +47,7 @@ if [ $(uname) == "Darwin"  ]; then
 
     # Include the the perlbrew stuff
     export PERLBREW_ROOT=/usr/local/perlbrew
-    export PERLBREW_PATH=/usr/local/perlbrew/bin:/usr/local/perlbrew/perls/current/bin:"${PATH}"
+    export PERLBREW_PATH=/usr/local/perlbrew/perls/perl-5.14.1/bin:"${PATH}"
 
     # Homebrew Stuff
     export HOMEBREW_PREFIX=/usr/local
@@ -56,7 +62,7 @@ if [ $(uname) == "Darwin"  ]; then
     export EDITOR="/usr/local/bin/mate -w"
 
     # The perlbrew bash function for perlbrew use in shell scripts
-    if [ -f /usr/local/perlbrew/etc/bashrc ]; then
-        source /usr/local/perlbrew/etc/bashrc
-    fi
+    # if [ -f /usr/local/perlbrew/etc/bashrc ]; then
+        # source /usr/local/perlbrew/etc/bashrc
+    # fi
 fi
