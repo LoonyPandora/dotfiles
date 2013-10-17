@@ -30,6 +30,15 @@ export HISTSIZE="500"
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend
 
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob
+
+# Bash 4 only: `**/qux` will enter `./foo/bar/baz/qux`
+shopt -s autocd 2> /dev/null
+
+# Bash 4 only: `echo **/*.txt`
+shopt -s globstar 2> /dev/null
+
 # Make multiple-line commands count as one
 shopt -s cmdhist
 
