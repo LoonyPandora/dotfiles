@@ -8,18 +8,18 @@
 # Add authorized_keys
 cat "$HOME/.dotfiles/config/ssh/authorized_keys" >> "$HOME/.ssh/authorized_keys"
 
+# Cleanup old . bash_history
+if [ -f "$HOME/.bash_history" ]; then
+    rm "$HOME/.bash_history"
+fi
+
 # TODO: Make this read all files from the config dir with some error handling
-dotfiles="bash_aliases bash_completion bash_profile bashrc jsbeautifyrc jshintrc perltidyrc tm_properties gitignore_global"
+dotfiles="bash_aliases bash_completion bash_profile bashrc bash_history jsbeautifyrc jshintrc perltidyrc tm_properties gitignore_global"
 
 for dotfile in $dotfiles
 do
     ln -sf "$HOME/.dotfiles/config/$dotfile" "$HOME/.$dotfile"
 done
-
-# Cleanup old . bash_history
-if [ -f "$HOME/.bash_history" ]; then
-    rm "$HOME/.bash_history"
-fi
 
 # Only quieten the login on OS X - It's useful on remote linux servers
 if [ $(uname) == "Darwin"  ]; then

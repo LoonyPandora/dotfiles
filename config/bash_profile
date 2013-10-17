@@ -19,7 +19,7 @@ fi
 export HISTTIMEFORMAT="%d/%m/%y - %H:%M:%S: "
 
 # Set the history file to be in the dotfiles directory
-export HISTFILE="$HOME/.dotfiles/bash_history"
+export HISTFILE="$HOME/.dotfiles/config/bash_history"
 
 # Give us much much more storage for history
 export HISTFILESIZE="100000"
