@@ -30,7 +30,7 @@ if [ $(uname) == "Darwin"  ]; then
     export HOMEBREW_PREFIX=/usr/local
 
     # TextMate Stuff
-    export TM_PERL=/usr/local/plenv/versions/5.18.1/bin/perl
+    export TM_PERL=/usr/local/plenv/shims/perl
 
     # Default editor should be textmate for things that need it.
     export EDITOR="/usr/local/bin/mate -w"
