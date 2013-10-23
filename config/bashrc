@@ -12,8 +12,8 @@ if [ $(uname) == "Darwin"  ]; then
     fi
 
     # Rubygems bin
-    if [ -d /usr/local/Cellar/ruby/1.9.3-p125/bin ]; then
-        PATH=/usr/local/Cellar/ruby/1.9.3-p125/bin:"${PATH}"
+    if [ -d /usr/local/opt/ruby/bin ]; then
+        PATH=/usr/local/opt/ruby/bin:"${PATH}"
     fi
 
     # Node.js bin
@@ -26,43 +26,18 @@ if [ $(uname) == "Darwin"  ]; then
         PATH=/usr/X11/lib:"${PATH}"
     fi
 
-    # Perlbrew path
-    if [ -d /usr/local/perlbrew/perls/perl-5.14.1/bin ]; then
-        PATH=/usr/local/perlbrew/perls/perl-5.14.1/bin:"${PATH}"
-    fi
-
-
-    # Fallback in case my symlinks get borked
-    if [ -d /Users/james/.homebrew/bin ]; then
-        PATH="${PATH}":/Users/james/.homebrew/bin
-    fi
-
-    if [ -d /Users/james/.homebrew/sbin ]; then
-        PATH="${PATH}":/Users/james/.homebrew/sbin
-    fi
-
-    # Xcode 4 doesn't have a PPC assembler, so remove from archflags
-    # Might as well build both 32 and 64 bit versions, disk space is no problem
-    export ARCHFLAGS="-arch x86_64 -arch i386"
-
-    # Include the the perlbrew stuff
-    export PERLBREW_ROOT=/usr/local/perlbrew
-    export PERLBREW_PATH=/usr/local/perlbrew/perls/perl-5.14.1/bin:"${PATH}"
-
     # Homebrew Stuff
     export HOMEBREW_PREFIX=/usr/local
 
-    # Node JS Stuff
-    export NODE_PATH=/usr/local/lib/node:/usr/local/lib/node_modules
-
     # TextMate Stuff
-    export TM_PERL=/usr/local/perlbrew/perls/perl-5.14.1/bin/perl
+    export TM_PERL=/usr/local/plenv/versions/5.18.1/bin/perl
 
     # Default editor should be textmate for things that need it.
     export EDITOR="/usr/local/bin/mate -w"
 
-    # The perlbrew bash function for perlbrew use in shell scripts
-    # if [ -f /usr/local/perlbrew/etc/bashrc ]; then
-        # source /usr/local/perlbrew/etc/bashrc
-    # fi
+    # plenv stuff
+    export PLENV_ROOT=/usr/local/plenv
+
+    # execute plenv shims
+    if which plenv > /dev/null; then eval "$(plenv init -)"; fi
 fi
