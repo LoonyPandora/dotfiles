@@ -6,7 +6,7 @@ if [ -f "$HOME/.bashrc" ]; then
 fi
 
 # Include some useful functions
-if [ -f "$HOME/.bash_aliases" ]; then
+if [ -f "$HOME/.bash_functions" ]; then
     source "$HOME/.bash_functions"
 fi
 
