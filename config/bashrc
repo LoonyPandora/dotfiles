@@ -34,10 +34,10 @@ if [ $(uname) == "Darwin"  ]; then
 
     # Default editor should be textmate for things that need it.
     export EDITOR="/usr/local/bin/mate -w"
-
-    # plenv stuff
-    export PLENV_ROOT=/usr/local/plenv
-
-    # execute plenv shims
-    if which plenv > /dev/null; then eval "$(plenv init -)"; fi
 fi
+
+# plenv stuff
+export PLENV_ROOT=/usr/local/plenv
+
+# execute plenv shims
+if which plenv > /dev/null; then eval "$(plenv init -)"; fi
