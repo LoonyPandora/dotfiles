@@ -26,11 +26,18 @@ if [ $(uname) == "Darwin"  ]; then
         PATH=/usr/X11/lib:"${PATH}"
     fi
 
+    # To pull in other X11 stuff
+    if [ -d /usr/X11/bin ]; then
+        PATH=/usr/X11/bin:"${PATH}"
+    fi
+
     # Homebrew Stuff
     export HOMEBREW_PREFIX=/usr/local
 
     # TextMate Stuff
     export TM_PERL=/usr/local/plenv/shims/perl
+    export TM_PERLTIDY=/usr/local/plenv/shims/perltidy
+    export TM_GIT=/usr/local/bin/git
 
     # Default editor should be textmate for things that need it.
     export EDITOR="/usr/local/bin/mate -w"
