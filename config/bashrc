@@ -41,6 +41,9 @@ if [ $(uname) == "Darwin"  ]; then
 
     # Default editor should be textmate for things that need it.
     export EDITOR="/usr/local/bin/mate -w"
+
+    # Docker / boot2docker stuff
+    export DOCKER_HOST="tcp://"
 fi
 
 # plenv stuff
