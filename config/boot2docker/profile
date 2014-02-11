@@ -1,0 +1,3 @@
+VM_DISK="/Users/james/Library/VirtualBox/VM/boot2docker-vm/boot2docker.vmdk"
+BOOT2DOCKER_ISO="/usr/local/share/boot2docker/boot2docker.iso"
+
