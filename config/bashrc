@@ -36,7 +36,7 @@ if [ $(uname) == "Darwin"  ]; then
     export HOMEBREW_BUILD_FROM_SOURCE=1
 
     # Homebrew Stuff
-    export PYTHONPATH=/usr/local/lib/python3.3/site-packages:/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+    export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 
     # TextMate Stuff
     export TM_PERL=/usr/local/plenv/shims/perl
