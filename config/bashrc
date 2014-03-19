@@ -48,6 +48,9 @@ if [ $(uname) == "Darwin"  ]; then
 
     # Docker / boot2docker stuff
     export DOCKER_HOST="tcp://"
+
+    # Added by the Heroku Toolbelt
+    export PATH="/usr/local/heroku/bin:$PATH"
 fi
 
 # plenv stuff
