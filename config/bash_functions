@@ -12,3 +12,69 @@ echo -e "\033[0mCOLOR_NC (No color)
 \033[0;33mCOLOR_YELLOW\t\033[1;33mCOLOR_LIGHT_YELLOW
 \033[1;30mCOLOR_GRAY\t\033[0;37mCOLOR_LIGHT_GRAY"
 }
+
+
+# Quick & dirty Chimera API backend deployment
+function chimeradeployapi {
+    CHIMERAENV=$1
+    BRANCH=$2
+
+    if [ "$CHIMERAENV" == "staging" ]; then
+        echo "Deploying to staging boxes"
+        HOSTSUFFIX="staging.chimera.uk2group.com"
+    elif [ "$CHIMERAENV" == "uat" ]; then
+        echo "Deploying to UAT boxes"
+        HOSTSUFFIX="uat.chimera.uk2group.com"
+    elif [ "$CHIMERAENV" == "us" ]; then
+        echo "Deploying to $CHIMERAENV live platform"
+        HOSTSUFFIX="$CHIMERAENV.chimera.uk2group.com"
+    else
+        echo "Usage: chimeradeployapi staging|uat|us [branch]"
+        return
+    fi
+
+    if [ "$BRANCH" == "" ]; then
+        BRANCHSWITCH="no branch change"
+    else
+        BRANCHSWITCH="changing to branch $BRANCH"
+    fi
+    MSG="$USER beginning deployment to $CHIMERAENV environment ($BRANCHSWITCH)"
+    wget -O /dev/null "http://irc.uk2.net:6500/?channel=devs|cpdevs|qa&message=$MSG"
+
+    for box in api1 api2 api3 gen; do
+        echo "$box.$HOSTSUFFIX..."
+        echo -e "\tgit pull..."
+        ssh $box.$HOSTSUFFIX \
+            "cd /usr/local/chimera && sudo -u codemonkey bash -li -c 'git pull'"
+        if [ "$BRANCH" != "" ]; then
+            echo -e "\tSwitch to $BRANCH..."
+            ssh $box.$HOSTSUFFIX \
+                "cd /usr/local/chimera && sudo -u codemonkey bash -li -c 'git checkout $BRANCH'"
+            echo -e "\tgit pull again..."
+            ssh $box.$HOSTSUFFIX \
+                "cd /usr/local/chimera && sudo -u codemonkey bash -li -c 'git pull'"
+        fi
+        if [ "$box" != "gen" ]; then
+            echo -e "\tRestart app..."
+            ssh $box.$HOSTSUFFIX "sudo /etc/init.d/dancer restart"
+            echo -e "\tKill domain_lookup..."
+            ssh $box.$HOSTSUFFIX "sudo pkill -f domain_lookup"
+        fi
+        echo "Deployment to $box.$HOSTSUFFIX complete."
+    done
+
+    # Now check whether we need DB updates:
+    DB_TEST="prove /usr/local/chimera/t/database_structure.t > /dev/null 2>&1"
+    if ssh -q -t gen.$HOSTSUFFIX "/bin/bash -l -c '$DB_TEST'" >/dev/null ; then
+        echo "No DB update required"
+    else 
+        echo "*****************************************"
+        echo "***** DB schema update required *********"
+        echo "*****************************************"
+    fi
+
+    echo "Deployment complete."
+
+    MSG="$USER deployed to $CHIMERAENV environment ($BRANCHSWITCH)"
+    wget -q -O /dev/null "http://irc.uk2.net:6500/?channel=devs|cpdevs|qa&message=$MSG"
+}
