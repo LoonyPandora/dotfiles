@@ -43,6 +43,9 @@ if [ $(uname) == "Darwin"  ]; then
     export TM_PERLTIDY=/usr/local/plenv/shims/perltidy
     export TM_GIT=/usr/local/bin/git
 
+    # Node.js module path
+    export NODE_PATH=/usr/local/lib/node_modules
+
     # Default editor should be textmate for things that need it.
     export EDITOR="/usr/local/bin/mate -w"
 
