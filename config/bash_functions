@@ -1,7 +1,7 @@
 # ~/.bash_functions: Useful functions
 
 # Output all the ANSI Colors
-function colors() {
+function colors {
 echo -e "\033[0mCOLOR_NC (No color)
 \033[1;37mCOLOR_WHITE\t\033[0;30mCOLOR_BLACK
 \033[0;34mCOLOR_BLUE\t\033[1;34mCOLOR_LIGHT_BLUE
@@ -13,6 +13,13 @@ echo -e "\033[0mCOLOR_NC (No color)
 \033[1;30mCOLOR_GRAY\t\033[0;37mCOLOR_LIGHT_GRAY"
 }
 
+
+# Updates all installed cpan modules for the current perl
+# Requires a perl that was installed with current users permission
+# i.e plenv / perlbrew / local::lib - no tests, as they have already been run
+function cpanupdate {
+    cpan-outdated | xargs cpanm -n
+}
 
 # Quick & dirty Chimera API backend deployment
 function chimeradeployapi {
