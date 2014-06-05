@@ -6,7 +6,7 @@
 --nostatic-block-comments
 --paren-tightness=2
 --square-bracket-tightness=2
---maximum-line-length=78
+--maximum-line-length=98
 --no-outdent-labels
 --want-break-before="+ - * x ** / % = == != >= <= =~ !~ ~~ < > | & += -= *= x= **= /= %= |= <<= >>= &= &&= ||= \\= .="
 
