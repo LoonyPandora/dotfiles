@@ -59,5 +59,8 @@ fi
 # plenv stuff
 export PLENV_ROOT=/usr/local/plenv
 
+# Old style perlbrew stuff
+export PERLBREW_ROOT=/usr/local/perlbrew
+
 # execute plenv shims
 if which plenv > /dev/null; then eval "$(plenv init -)"; fi
