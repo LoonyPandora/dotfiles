@@ -62,5 +62,10 @@ export PLENV_ROOT=/usr/local/plenv
 # Old style perlbrew stuff
 export PERLBREW_ROOT=/usr/local/perlbrew
 
+# Export perlbrew stuff if we are running that
+if [ -d $PERLBREW_ROOT ]; then
+    source $PERLBREW_ROOT/etc/bashrc
+fi
+
 # execute plenv shims
 if which plenv > /dev/null; then eval "$(plenv init -)"; fi
